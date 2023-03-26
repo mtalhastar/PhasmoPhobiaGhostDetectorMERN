@@ -2,16 +2,16 @@ import { useState } from "react"
 
 const EvidenceForm = () => {
     const [name, setName] = useState('')
-    const [location, setLocation] = useState('')
+    const [image, setImage] = useState('')
     const [error, setError] = useState(null)
     const [emptyFields, setEmptyFields] = useState([])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        const buyer = {name, location}
+        const buyer = {Name:name, Image:image}
 
-        const response = await fetch('/api/buyerinfo', {
+        const response = await fetch('/evidence', {
             method: 'POST',
             body: JSON.stringify(buyer),
             headers: {
@@ -27,7 +27,7 @@ const EvidenceForm = () => {
 
         if (response.ok) {
             setName('')
-            setLocation('')
+            setImage('')
             setError(null)
             setEmptyFields([])
            
@@ -49,13 +49,13 @@ const EvidenceForm = () => {
             <label className="label1">Image:</label>
             <input 
                 type="text" 
-                onChange={(e) => setLocation(e.target.value)}
-                value={location}
+                onChange={(e) => setImage(e.target.value)}
+                value={image}
                 className={emptyFields.includes('location') ? 'error' : ''}
             />
 
             <button className="button1">Add Evidence Details</button>
-            {error && <xdiv className="error">{error}</xdiv>}
+            {error && <div className="error">{error}</div>}
         </form>
     )
 }

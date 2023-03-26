@@ -5,16 +5,16 @@ import EvidenceForm from '../component/EvidenceForm'
 
 const EvidencePage = () => {
     
-    const [buyer,setBuyerState]=useState()
+    const [evidence,setEvidence]=useState()
 
     useEffect(() => {
         
         const fetchBuyer = async () => {
-            const response = await fetch('/api/buyerinfo')
+            const response = await fetch('/evidence')
             const json = await response.json()
 
             if (response.ok) {
-                setBuyerState([...json])
+                setEvidence([...json])
             }
         }
 
@@ -24,8 +24,8 @@ const EvidencePage = () => {
     return (
         <div className="home">
             <div className='buyer'>
-                {buyer && buyer.map((buyer) => (
-                    <EvidenceDetails key={buyer._id} buyer={buyer} />
+                {evidence && evidence.map((buyer) => (
+                    <EvidenceDetails key={evidence._id} evidence={buyer} />
                 ))}
             </div>
             <EvidenceForm />
