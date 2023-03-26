@@ -1,5 +1,6 @@
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 
+import 'material-symbols'
 const GhostDetails = ({ ghost }) => {
 
     const handleClick = async () => {

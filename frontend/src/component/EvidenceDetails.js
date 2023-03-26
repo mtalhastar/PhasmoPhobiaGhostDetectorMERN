@@ -1,4 +1,7 @@
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
+import 'material-symbols'
+
+
 import { useState } from 'react'
 const EvidenceDetails = ({ evidence }) => {
    
@@ -6,22 +9,21 @@ const EvidenceDetails = ({ evidence }) => {
     const[name,setName]=useState("")
    
     const handleClick = async () => {
-        const response = await fetch('/api/buyerinfo/' + evidence._id, {
+        const response = await fetch('/evidence' + evidence._id, {
             method: 'DELETE'
         })
         
     }
 
     const updateInfo = async() => {
-        const name = prompt('Update Name')
-        const image = prompt('Update Image')
+         
+      
+         
+             const Evidence={Name:name,Image:image}
+         
+       
 
-        const Evidence = {
-            Name: name,
-            Image:image
-        }
-
-        const update = await fetch('/api/buyerinfo/' + evidence._id, {
+        const update = await fetch('/evidence' + evidence._id, {
             method: 'PUT',
             body: JSON.stringify(Evidence),
             headers: {
@@ -37,21 +39,23 @@ const EvidenceDetails = ({ evidence }) => {
             <p>{formatDistanceToNow(new Date(evidence.createdAt), { addSuffix: true })}</p>
             <span className="material-symbols-outlined" onClick={handleClick}>delete</span>
             <h2 className="material-symbols-outlined" onClick={updateInfo}>update</h2>
-          <form className="updateTextBox" onSubmit={updateInfo}> 
+          <form  onSubmit={updateInfo}> 
       
-        <label> Edit Price : </label>
+        <label> Edit Name : </label>
         <input
-          data-testid="PriceInput"
+          
         type="text"
         onChange={(e)=> setName(e.target.value)}
         value={name}
+        required
         />
-        <label> Edit Name : </label>
+        <label> Edit Image : </label>
          <input
-         data-testid="NameInput"
+        
         type="text"
         onChange={(e)=> setImage(e.target.value)}
         value={image}
+        required
         />
         </form>
         </div>
