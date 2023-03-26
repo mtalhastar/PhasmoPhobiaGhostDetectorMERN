@@ -29,6 +29,7 @@ const handleDoubleClick = () => {
   
     if(!doubleClicked){
       props.onDisable(true)
+      setSelected(false)
     }
     else{
       props.onDisable(false)
