@@ -1,6 +1,6 @@
-import { useEffect,useState,useMemo } from "react"
+import { useEffect,useState } from "react"
 import Card from "../component/Card.js"
-import axios from 'axios'
+
 
 const refresh=()=>{
   window.location.reload()
@@ -10,9 +10,9 @@ const refresh=()=>{
 const SecondPage =()=>{
    const [evidences,setevidences] =useState(null)
    const [ghost,setghost]=useState(null)
-    const [matchingGhosts, setMatchingGhosts] = useState([]);
-    const [selectedEvidences, setSelectedEvidences] = useState([]);
-    const [selectedCards,setSelectedCards]=useState([])
+   const [matchingGhosts, setMatchingGhosts] = useState([]);
+   const [selectedEvidences, setSelectedEvidences] = useState([]);
+   const [selectedCards,setSelectedCards]=useState([])
     
 /*const handleSetGhosts = (matchingGhost) => {
     setMatchingGhosts(matchingGhost);
@@ -79,6 +79,7 @@ const handleSetEvidence = (matchingEvidences, removeGhost) => {
          fetchEvidence()
         
     },[])
+    
 return(
         <main>
         <section className="evidence-container">

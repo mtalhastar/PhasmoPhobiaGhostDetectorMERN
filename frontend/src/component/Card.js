@@ -1,4 +1,4 @@
-import { useEffect,useState,useMemo,useRef } from "react"
+import { useState } from "react"
 function Card(props) {
 
 const [selected, setSelected] = useState(false);
