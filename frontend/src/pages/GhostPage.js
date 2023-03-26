@@ -5,16 +5,16 @@ import GhostForm from '../component/GhostForm'
 
 const GhostPage = () => {
     
-    const [buyer,setBuyerState]=useState()
+    const [ghost,setGhostState]=useState()
 
     useEffect(() => {
         
         const fetchBuyer = async () => {
-            const response = await fetch('/api/ghostinfo')
+            const response = await fetch('/ghost')
             const json = await response.json()
 
             if (response.ok) {
-                setBuyerState([...json])
+                setGhostState([...json])
             }
         }
 
@@ -24,8 +24,8 @@ const GhostPage = () => {
     return (
         <div className="home">
             <div className='buyer'>
-                {buyer && buyer.map((buyer) => (
-                    <GhostDetails key={buyer._id} buyer={buyer} />
+                {ghost && ghost.map((ghost) => (
+                    <GhostDetails key={ghost._id} ghost={ghost} />
                 ))}
             </div>
             <GhostForm />
