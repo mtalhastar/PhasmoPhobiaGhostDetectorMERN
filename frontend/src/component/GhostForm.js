@@ -47,14 +47,27 @@ const GhostForm = () => {
             />
 
             <label className="label1">Evidence List:</label>
-            <input 
-                type="text" 
-                onChange={(e) => setEvidenceList(e.target.value)}
-                value={evidenceList}
-                className={emptyFields.includes('evidenceList') ? 'error' : ''}
-            />
-
+          
+            <label className="label1">You can assign multiple evidences here"</label>
+             <select className="dropdown" required >
+             <option value="">Select evidence</option>
+             <option value="evidence1">Evidence 1</option>
+             <option value="evidence2">Evidence 2</option>
+             <option value="evidence3">Evidence 3</option>
+             </select>            
+            
+             <label className="label1">Select the Game,when done then click "Add Ghost"</label>
+             <select className="dropdown" required >
+             <option value="">Select evidence</option>
+             <option value="evidence1">Evidence 1</option>
+             <option value="evidence2">Evidence 2</option>
+             <option value="evidence3">Evidence 3</option>
+             </select> 
             <button className="button1">Add Ghost Details</button>
+
+
+        
+
             {error && <xdiv className="error">{error}</xdiv>}
         </form>
     )

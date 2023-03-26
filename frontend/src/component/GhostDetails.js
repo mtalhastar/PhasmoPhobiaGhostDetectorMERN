@@ -23,7 +23,7 @@ const GhostDetails = ({ ghost }) => {
             evidenceList:evidenceList
         }
 
-        const update = await fetch('/ghost' + ghost._id, {
+        const update = await fetch('/ghost/' + ghost._id, {
             method: 'PUT',
             body: JSON.stringify(Property),
             headers: {

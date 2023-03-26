@@ -58,6 +58,29 @@ body {
   margin: 0px;
 }
 
+.dropdown {
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.dropdown:hover {
+  cursor: pointer;
+}
+
+.dropdown:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #007bff;
+}
+
+
+
+
+
 img{
   width: 170px;
     height: 100px;
