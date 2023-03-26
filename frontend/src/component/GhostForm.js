@@ -100,7 +100,7 @@ const GhostForm = () => {
              <option value="evidence2">Evidence 2</option>
              <option value="evidence3">Evidence 3</option>
              </select> 
-            <button className="button1"    > Add Ghost Details</button>
+            <button className="button1"> Add Ghost Details</button>
             {error && <xdiv className="error">{error}</xdiv>}
         </form>
     )

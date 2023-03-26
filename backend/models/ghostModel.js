@@ -10,10 +10,11 @@ const ghostSchema=new Schema({
         Image: {
             type:String
         },
-        EvidenceList:{
-            type:[String],
-            required:true
+        EvidenceList:[{
+            Game:{type:String,required:true},
+            evidences:[String],
         }
+        ]
     },{timestamps:true});
 
 module.exports=mongoose.model('Ghost',ghostSchema)

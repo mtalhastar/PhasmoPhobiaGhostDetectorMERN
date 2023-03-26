@@ -13,6 +13,8 @@ const SecondPage =()=>{
     const [matchingGhosts, setMatchingGhosts] = useState([]);
     const [selectedEvidences, setSelectedEvidences] = useState([]);
     const [selectedCards,setSelectedCards]=useState([])
+    const [game, setGame] = useState('')
+    const [gameList,setGameList] = useState('')
     
 /*const handleSetGhosts = (matchingGhost) => {
     setMatchingGhosts(matchingGhost);
@@ -23,11 +25,12 @@ const handleCardSelect=(evidence)=>{
     setSelectedCards(updatedSelectedCards);
     const filteredGhosts = ghost.filter((ghost) =>
       updatedSelectedCards.every((selected) =>
-        ghost.EvidenceList.includes(selected.Name)
+        ghost.EvidenceList.evidences.includes(selected.Name)
       )
     );
     setMatchingGhosts(filteredGhosts);
 }
+
 
 const handleUnSelect=(evidence)=>{
   const updatedSelectedCards = selectedCards.filter(
@@ -40,12 +43,13 @@ const handleUnSelect=(evidence)=>{
     } else {
       const filteredGhosts = ghost.filter((ghost) =>
         updatedSelectedCards.every((selected) =>
-          ghost.EvidenceList.includes(selected.Name)
+          ghost.EvidenceList.evidences.includes(selected.Name)
         )
       );
       setMatchingGhosts(filteredGhosts);
     }
 }
+
 
 const handleSetEvidence = (matchingEvidences, removeGhost) => {
   const uniqueEvidencesSet = new Set(selectedEvidences.concat(matchingEvidences));
@@ -64,17 +68,28 @@ const handleSetEvidence = (matchingEvidences, removeGhost) => {
           
          const evidence=await fetch('/evidence')
          const ghost=await fetch('/ghost')
+         const game=await fetch('/game')
          const ghostjson=await ghost.json()
          const json = await evidence.json()
          if(evidence.ok){
            setevidences([...json])
-           setghost([...ghostjson])
+           setGameList(game)
+
+          const updatedGhosts = ghostjson.map((ghost) => ({
+         ...ghost,
+         EvidenceList: ghost.EvidenceList.filter((evidenceList) => evidenceList.Game === game)
+         .map((evidenceList) => evidenceList.evidences)
+         .flat()
+         }));
+         if(updatedGhosts){
+          setghost([...updatedGhosts])
+         }
          }
          }
 
          fetchEvidence()
         
-    },[])
+    },[game])
 return(
         <main>
         <section className="evidence-container">
@@ -95,6 +110,20 @@ return(
        <section className="ghost-evidence-section">
         <h2>Ghost Evidence</h2>
         <button onClick={refresh}>Reset</button>
+     
+         <select className="dropdown" 
+       /*       value={selectedOption}
+              onChange={handleOptionChange}
+              onClick={handleAddEvidence}
+       */ >
+              <option value=""></option>
+             {allevidenceList && allevidenceList.map((option) => (
+             <option   key={option._id}     value={option.Name}>
+             {option.Name}
+             </option>
+             ))}
+             </select>             
+           
         <div className="cards">
         {evidences&&evidences.map((element)=>(
             <Card key={element._id} e= {element} ghosts={ghost} handleCardSelect={handleCardSelect}  handleUnSelect={handleUnSelect} evidence={evidences} setEvidence={handleSetEvidence} selectedEvidence={selectedEvidences} setSelectedEvidence={setSelectedEvidences}  matchghost={matchingGhosts} />

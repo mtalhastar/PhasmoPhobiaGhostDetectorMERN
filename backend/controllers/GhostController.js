@@ -19,7 +19,7 @@ const getAGhost=asyncHandler(async(req, res) => {
   res.status(200).json(ghost)
 })
 const createGhost = asyncHandler(async (req, res) => {
-  const { Name ,Image,EvidenceList=[]} = req.body;
+  const { Name ,Image,EvidenceList} = req.body;
   // initialize an empty array to store the evidences
   try {
     // create a new Ghost object with Name, Image, and evidences properties
@@ -61,7 +61,7 @@ const updateGhost =asyncHandler(async(req, res) => {
     if(!mongoose.Types.ObjectId.isValid(id)){
       return res.status(400).json({message:`No such Ghost`})
       }
-    const ghost =await Ghost.findByIdAndUpdate({_id:id},{...req.body})
+    const ghost =await Ghost.findByIdAndUpdate({_id:id},{...req.body}, { new: true })
     res.status(200).json(ghost)
 })
 

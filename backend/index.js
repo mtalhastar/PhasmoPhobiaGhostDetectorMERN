@@ -19,7 +19,8 @@ app.use(express.json())
 app.use(cors())
 app.use('/ghost', require('./routes/ghostRoute'));
 app.use('/evidence', require('./routes/evidenceRoute'));
-//app.use('/buyerinfo', require('./routes/information'));
+app.use('/game', require('./routes/gameroutes'));
+
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
 })
