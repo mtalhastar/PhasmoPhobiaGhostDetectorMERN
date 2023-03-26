@@ -24,14 +24,10 @@ const GhostForm = () => {
         fetchEvidence()
     },[])
 
-
-
-
-
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        const ghost = {name, evidenceList}
+        const ghost = {Name:name, EvidenceList:evidenceList}
 
         const response = await fetch('/ghost', {
             method: 'POST',
@@ -61,12 +57,12 @@ const GhostForm = () => {
      setSelectedOption(event.target.value);
      };
 
-    const handleAddEvidence = () => {
-     if (selectedOption) {
-      setEvidenceList([...evidenceList, selectedOption]);
-      setSelectedOption('');
-     }
-     };
+ const handleAddEvidence = () => {
+  if (selectedOption && !evidenceList.includes(selectedOption)) {
+    setEvidenceList([...evidenceList, selectedOption]);
+    setSelectedOption('');
+  }
+};
 
     return (
         <form className="create" onSubmit={handleSubmit}>
@@ -83,28 +79,28 @@ const GhostForm = () => {
 
             <label className="label1">Evidence List:</label>
           
-            <label className="label1">You can assign multiple evidences here"</label>
-             <select className="dropdown" required >
-             <option value="">Select evidence</option>
+            <label className="label1">You can assign multiple evidences here</label>
+             <select className="dropdown" 
+              value={selectedOption}
+              onChange={handleOptionChange}
+              onClick={handleAddEvidence}
+              >
+              <option value=""></option>
              {allevidenceList && allevidenceList.map((option) => (
-             <option key={option._id} value={option.Name}>
+             <option   key={option._id}     value={option.Name}>
              {option.Name}
              </option>
              ))}
              </select>            
-            
-             <label className="label1">Select the Game</label>
-             <select className="dropdown" required >
+             
+             <label className="label1">Assign The Game</label>
+             <select className="dropdown">
              <option value="">Select evidence</option>
              <option value="evidence1">Evidence 1</option>
              <option value="evidence2">Evidence 2</option>
              <option value="evidence3">Evidence 3</option>
              </select> 
-            <button className="button1">Add Ghost Details</button>
-
-
-        
-
+            <button className="button1"    > Add Ghost Details</button>
             {error && <xdiv className="error">{error}</xdiv>}
         </form>
     )
