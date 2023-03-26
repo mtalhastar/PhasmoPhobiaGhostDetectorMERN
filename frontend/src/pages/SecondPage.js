@@ -1,6 +1,6 @@
-import { useEffect,useState } from "react"
+import { useEffect,useState,useMemo } from "react"
 import Card from "../component/Card.js"
-
+import axios from 'axios'
 
 const refresh=()=>{
   window.location.reload()
@@ -10,9 +10,9 @@ const refresh=()=>{
 const SecondPage =()=>{
    const [evidences,setevidences] =useState(null)
    const [ghost,setghost]=useState(null)
-   const [matchingGhosts, setMatchingGhosts] = useState([]);
-   const [selectedEvidences, setSelectedEvidences] = useState([]);
-   const [selectedCards,setSelectedCards]=useState([])
+    const [matchingGhosts, setMatchingGhosts] = useState([]);
+    const [selectedEvidences, setSelectedEvidences] = useState([]);
+    const [selectedCards,setSelectedCards]=useState([])
     
 /*const handleSetGhosts = (matchingGhost) => {
     setMatchingGhosts(matchingGhost);
@@ -46,11 +46,7 @@ const handleUnSelect=(evidence)=>{
       setMatchingGhosts(filteredGhosts);
     }
 }
-const handleCardDisable=(disabled) =>{
-if (disabled) {
-      return;
-}
-}
+
 const handleSetEvidence = (matchingEvidences, removeGhost) => {
   const uniqueEvidencesSet = new Set(selectedEvidences.concat(matchingEvidences));
   let uniqueEvidences = Array.from(uniqueEvidencesSet);
@@ -79,7 +75,6 @@ const handleSetEvidence = (matchingEvidences, removeGhost) => {
          fetchEvidence()
         
     },[])
-    
 return(
         <main>
         <section className="evidence-container">
@@ -102,7 +97,7 @@ return(
         <button onClick={refresh}>Reset</button>
         <div className="cards">
         {evidences&&evidences.map((element)=>(
-            <Card key={element._id} e= {element} ghosts={ghost}  onDisable={handleCardDisable} handleCardSelect={handleCardSelect}  handleUnSelect={handleUnSelect} evidence={evidences} setEvidence={handleSetEvidence} selectedEvidence={selectedEvidences} setSelectedEvidence={setSelectedEvidences}  matchghost={matchingGhosts} />
+            <Card key={element._id} e= {element} ghosts={ghost} handleCardSelect={handleCardSelect}  handleUnSelect={handleUnSelect} evidence={evidences} setEvidence={handleSetEvidence} selectedEvidence={selectedEvidences} setSelectedEvidence={setSelectedEvidences}  matchghost={matchingGhosts} />
          ))
         }
       </div>

@@ -1,9 +1,26 @@
-import { useState } from "react"
+import { useEffect,useState,useMemo,useRef } from "react"
 function Card(props) {
 
 const [selected, setSelected] = useState(false);
 const [doubleClicked, setDoubleClicked] = useState(false);
 
+const matchingGhostlist=useRef([])
+function findGhosts(evidenceArray, ghostArray) {
+const ghosts = [];
+for (const ghost of ghostArray) {
+let found = true;
+for (const evidence of evidenceArray) {
+if (!ghost.EvidenceList.includes(evidence.Name)) {
+found = false;
+break;
+}
+}
+if (found) {
+ghosts.push(ghost);
+}
+}
+return ghosts;
+}
 
 const handleClick = () => {
      setSelected(!selected);
@@ -26,16 +43,7 @@ const handleClick = () => {
 
 const handleDoubleClick = () => {
     setDoubleClicked(!doubleClicked);
-  
-    if(!doubleClicked){
-      props.onDisable(true)
-      setSelected(false)
-    }
-    else{
-      props.onDisable(false)
-    }
-  
-};
+  };
 return (
  <div className={`card card1 ${selected ? 'selected' : ''} ${doubleClicked ? 'double-clicked' : ''}`} onClick={handleClick} onDoubleClick={handleDoubleClick} >
   <div className="container">

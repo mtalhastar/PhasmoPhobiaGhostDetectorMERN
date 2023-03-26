@@ -6,9 +6,9 @@ const NavBar =()=>{
            <nav>
         <div className="nav-header"> <span className="nav-logo">Ghost Evidence</span> </div>
         <ul className="nav-links">         
-            <li><Link to="/Page1"><span>Page 1</span></Link></li>
-            <li><Link to="/"><span>Page 2</span></Link></li>
-            <li><Link to="/Page3"><span>Page 3</span></Link></li>
+            <li><Link to="/"><span>Ghost Evidence</span></Link></li>
+            <li><Link to="/Evidence"><span>Evidence Details</span></Link></li>
+            <li><Link to="/Ghost"><span>Ghost Details</span></Link></li>
         </ul>
          </nav>
 </header>

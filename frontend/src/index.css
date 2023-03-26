@@ -1,7 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=VT323&display=swap');
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+
+:root {
+  --primary: #7733b8;
+  --error: #ff002b;
 }
 
 body {
@@ -170,9 +177,7 @@ main {
 .ghost-section h2 {
   text-align: center;
 }
-.ghost-section p {
 
-}
 .evidence-container {
   display: flex;
   flex-direction: column;
@@ -188,4 +193,119 @@ main {
   background-color: #f8f8f8;
   border-radius: 10px;
   padding: 10px;
+}
+
+header .container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header a {
+  color: rgb(120, 83, 189);
+  text-decoration: none;
+}
+
+.pages {
+  max-width: 1400px;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+.home {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 100px;
+}
+
+.buyer-details {
+  display: inline-block;
+  background: #fff;
+  border-radius: 4px;
+  margin: 20px;
+  padding: 20px;
+  margin-left: 10px;
+  width: 230px;
+  position: relative;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.274);
+}
+
+.h31 {
+  margin: 0 0 10px 0;
+  font-size: 1.4em;
+  color: rgb(255, 255, 255);
+}
+
+.label1 {
+  margin: 0 0 10px 0;
+  font-size: 1.2em;
+  color: rgb(255, 255, 255);
+}
+
+.buyer-details p {
+  margin: 0;
+  font-size: 0.9em;
+  color: #1684af;
+}
+
+.buyer-details span {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  background: #f1f1f1;
+  padding: 6px;
+  border-radius: 50%;
+  color: #333;
+}
+
+.label1,
+input {
+  display: block;
+}
+
+input {
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.button1 {
+  background: var(--primary);
+  border: 0;
+  margin-top: 13px;
+  margin-left: 1px;
+  width: 100%;
+  color: #fff;
+  padding: 10px;
+  font-family: "Poppins";
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+div.error {
+  padding: 10px;
+  background: #ffefef;
+  border: 1px solid var(--error);
+  color: var(--error);
+  border-radius: 4px;
+  margin: 20px 0;
+}
+
+input.error {
+  border: 1px solid var(--error);
+}
+
+form {
+  margin-top: 20px;
+  margin-left: -90px;
+  margin-right: 10px;
+  padding-right: 30px;
 }

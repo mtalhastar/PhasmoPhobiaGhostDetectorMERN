@@ -1,6 +1,10 @@
 import{BrowserRouter,Routes,Route} from 'react-router-dom';
 import SecondPage from './pages/SecondPage'
+import EvidencePage from './pages/EvidencePage'
+import GhostPage from './pages/GhostPage'
 import NavBar from './component/Navbar'
+
+
 function App() {
   return (
     <div>
@@ -11,6 +15,18 @@ function App() {
            <Route
            path="/"
            element= {<SecondPage/>}
+            />
+        </Routes>
+        <Routes>
+           <Route
+           path="/Evidence"
+           element= {<EvidencePage/>}
+            />
+        </Routes>
+        <Routes>
+           <Route
+           path="/Ghost"
+           element= {<GhostPage/>}
             />
         </Routes>
       </div>
