@@ -50,13 +50,21 @@ body {
 
 }
 
-img {
+.container img {
   width: 170px;
   height: 100px;
   display: block;
   border-radius: 10px 10px 0 0;
+  margin: 0px;
 }
 
+img{
+  width: 170px;
+    height: 100px;
+    display: block;
+    border-radius: 10px 10px 10px 10px;
+    margin:15px;
+}
 .container:after {
   content: "";
   height: 100%;
@@ -215,6 +223,10 @@ header a {
   margin: 0 auto;
 }
 
+.a{
+  padding: 10px;
+  margin: 0px;
+}
 .home {
   display: grid;
   grid-template-columns: 3fr 1fr;
@@ -228,10 +240,16 @@ header a {
   margin: 20px;
   padding: 20px;
   margin-left: 10px;
-  width: 230px;
+  width: 270px;
   position: relative;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.274);
 }
+.img1{
+  width:"500px";
+  height:"300px"
+}
+
+
 
 .h31 {
   margin: 0 0 10px 0;

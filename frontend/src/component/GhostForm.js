@@ -9,11 +9,11 @@ const GhostForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        const buyer = {name, evidenceList}
+        const ghost = {name, evidenceList}
 
-        const response = await fetch('/api/ghostinfo', {
+        const response = await fetch('/ghost', {
             method: 'POST',
-            body: JSON.stringify(buyer),
+            body: JSON.stringify(ghost),
             headers: {
                 'Content-Type': 'application/json'
             }

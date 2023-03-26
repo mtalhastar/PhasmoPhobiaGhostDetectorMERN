@@ -19,13 +19,13 @@ function App() {
         </Routes>
         <Routes>
            <Route
-           path="/Evidence"
+           path="/EvidencePage"
            element= {<EvidencePage/>}
             />
         </Routes>
         <Routes>
            <Route
-           path="/Ghost"
+           path="/GhostPage"
            element= {<GhostPage/>}
             />
         </Routes>

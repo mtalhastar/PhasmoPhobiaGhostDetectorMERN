@@ -1,6 +1,7 @@
 import 'material-symbols';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 import 'material-symbols'
+import '../index.css'
 
 
 import { useState } from 'react'
@@ -10,21 +11,21 @@ const EvidenceDetails = ({ evidence }) => {
     const[name,setName]=useState("")
    
     const handleClick = async () => {
-        const response = await fetch('/evidence' + evidence._id, {
+        const response = await fetch('/evidence/' + evidence._id, {
             method: 'DELETE'
         })
         
     }
 
-    const updateInfo = async() => {
+    const updateInfo = async(e) => {
          
-      
+      e.preventDefault()
          
-             const Evidence={Name:name,Image:image}
+       const Evidence={Name:name,Image:image}
          
        
 
-        const update = await fetch('/evidence' + evidence._id, {
+        const update = await fetch('/evidence/' + evidence._id, {
             method: 'PUT',
             body: JSON.stringify(Evidence),
             headers: {
@@ -36,11 +37,11 @@ const EvidenceDetails = ({ evidence }) => {
     return (
         <div className="buyer-details">
             <p><strong>Name: </strong>{evidence.Name}</p>
-            <p><strong>Image: </strong></p><img src={evidence.Image} width="200px" height="200px" />
+            <p><strong>Image: </strong></p><img className='img1' src={evidence.Image}/>
             <p>{formatDistanceToNow(new Date(evidence.createdAt), { addSuffix: true })}</p>
             <span className="material-symbols-outlined" onClick={handleClick}>delete</span>
-            <h2 className="material-symbols-outlined" onClick={updateInfo}>update</h2>
-          <form  onSubmit={updateInfo}> 
+            
+       <form  onSubmit={updateInfo}> 
       
         <label> Edit Name : </label>
         <input
@@ -58,6 +59,7 @@ const EvidenceDetails = ({ evidence }) => {
         value={image}
         required
         />
+        <button className='a' >Update</button>
         </form>
         </div>
     )
