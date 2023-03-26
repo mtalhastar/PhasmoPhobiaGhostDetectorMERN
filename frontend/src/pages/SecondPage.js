@@ -46,7 +46,11 @@ const handleUnSelect=(evidence)=>{
       setMatchingGhosts(filteredGhosts);
     }
 }
-
+const handleCardDisable=(disabled) =>{
+if (disabled) {
+      return;
+}
+}
 const handleSetEvidence = (matchingEvidences, removeGhost) => {
   const uniqueEvidencesSet = new Set(selectedEvidences.concat(matchingEvidences));
   let uniqueEvidences = Array.from(uniqueEvidencesSet);
@@ -97,7 +101,7 @@ return(
         <button onClick={refresh}>Reset</button>
         <div className="cards">
         {evidences&&evidences.map((element)=>(
-            <Card key={element._id} e= {element} ghosts={ghost} handleCardSelect={handleCardSelect}  handleUnSelect={handleUnSelect} evidence={evidences} setEvidence={handleSetEvidence} selectedEvidence={selectedEvidences} setSelectedEvidence={setSelectedEvidences}  matchghost={matchingGhosts} />
+            <Card key={element._id} e= {element} ghosts={ghost}  onDisable={handleCardDisable} handleCardSelect={handleCardSelect}  handleUnSelect={handleUnSelect} evidence={evidences} setEvidence={handleSetEvidence} selectedEvidence={selectedEvidences} setSelectedEvidence={setSelectedEvidences}  matchghost={matchingGhosts} />
          ))
         }
       </div>
