@@ -1,3 +1,4 @@
+import 'material-symbols';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 
 const GhostDetails = ({ ghost }) => {
