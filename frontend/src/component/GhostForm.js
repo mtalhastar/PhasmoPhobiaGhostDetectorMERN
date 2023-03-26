@@ -7,7 +7,7 @@ const GhostForm = () => {
     const [emptyFields, setEmptyFields] = useState([])
     const [selectedOption, setSelectedOption] = useState('');
     const [allevidenceList,setAllEvidenceList]=useState('')
-
+    const [gamelist,setgamelist]=useState([])
 
 
   useEffect(() => {
@@ -15,10 +15,13 @@ const GhostForm = () => {
         const fetchEvidence = async () => {
             const response = await fetch('/evidence')
             const json = await response.json()
-
+            const gameResponse = await fetch('/game')
+            const gamejson = await gameResponse.json()
             if (response.ok) {
                 setAllEvidenceList([...json])
+                setgamelist([...gamejson])
             }
+           
         }
 
         fetchEvidence()
@@ -94,12 +97,13 @@ const GhostForm = () => {
              </select>            
              
              <label className="label1">Assign The Game</label>
-             <select className="dropdown">
-             <option value="">Select evidence</option>
-             <option value="evidence1">Evidence 1</option>
-             <option value="evidence2">Evidence 2</option>
-             <option value="evidence3">Evidence 3</option>
-             </select> 
+              <select className="dropdown">
+             {gamelist && gamelist.map((option) => (
+             <option   key={option._id}     value={option.Name}>
+             {option.Name}
+             </option>
+             ))}
+             </select>  
             <button className="button1"> Add Ghost Details</button>
             {error && <xdiv className="error">{error}</xdiv>}
         </form>

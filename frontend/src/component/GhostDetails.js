@@ -35,9 +35,14 @@ const GhostDetails = ({ ghost }) => {
     return (
         <div className="buyer-details">
             <p><strong>Name: </strong>{ghost.Name}</p>
-            <p><strong>Evidence List: </strong> {ghost.EvidenceList && ghost.EvidenceList.map((ghost) => (
-                    <p>{ghost}</p> 
-                ))}</p>
+            <p><strong>Evidence List: </strong>{ghost.EvidenceList && ghost.EvidenceList.map((ghostz) => (
+           <div>
+           <h1> Game : {ghostz.Game}</h1>
+           {ghostz.evidences && ghostz.evidences.map((ghosts) => (
+          <p>{ghosts}</p>
+        ))}
+        </div>
+         ))}</p>
             <p>{formatDistanceToNow(new Date(ghost.createdAt), { addSuffix: true })}</p>
             <span className="material-symbols-outlined" onClick={handleClick}>delete</span>
             <h2 className="material-symbols-outlined" onClick={updateInfo}>update</h2>
