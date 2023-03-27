@@ -4,6 +4,31 @@ function Card(props) {
 const [selected, setSelected] = useState(false);
 const [doubleClicked, setDoubleClicked] = useState(false);
 
+
+useEffect(() => {
+    localStorage.setItem("selected", JSON.stringify(selected));
+    localStorage.setItem("doubleClicked", JSON.stringify(doubleClicked));
+  }, [selected, doubleClicked]);
+
+  // Retrieve selected and doubleClicked from localStorage on component mount
+  useEffect(() => {
+    const savedSelected = JSON.parse(localStorage.getItem("selected"));
+    const savedDoubleClicked = JSON.parse(localStorage.getItem("doubleClicked"));
+
+    if (savedSelected !== null) {
+      setSelected(savedSelected);
+    }
+
+    if (savedDoubleClicked !== null) {
+      setDoubleClicked(savedDoubleClicked);
+    }
+  }, []);
+
+  // Rest of component code ...
+
+
+
+
 const matchingGhostlist=useRef([])
 function findGhosts(evidenceArray, ghostArray) {
 const ghosts = [];

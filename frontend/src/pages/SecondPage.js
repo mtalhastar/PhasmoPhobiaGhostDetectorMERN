@@ -70,6 +70,65 @@ const handleUnSelect=(evidence)=>{
     }
 }
 
+
+useEffect(() => {
+  localStorage.setItem('selectedEvidences', JSON.stringify(selectedEvidences));
+  localStorage.setItem('selectedCards', JSON.stringify(selectedCards));
+   localStorage.setItem('matchingGhosts', JSON.stringify(matchingGhosts));
+  localStorage.setItem('ghost', JSON.stringify(ghost));
+   localStorage.setItem('evidences', JSON.stringify(evidences));
+   localStorage.setItem('gamelist', JSON.stringify(gamelist));
+  localStorage.setItem('game', JSON.stringify(game));
+  localStorage.setItem('extraghosts', JSON.stringify(extraghosts));
+}, [selectedEvidences,selectedCards,matchingGhosts,ghost,evidences,gamelist,game,extraghosts]);
+
+useEffect(() => {
+  const savedSelectedEvidences = JSON.parse(localStorage.getItem('selectedEvidences'));
+  if (savedSelectedEvidences !== null) {
+    setSelectedEvidences(savedSelectedEvidences);
+  }
+
+  const savedSelectedCards = JSON.parse(localStorage.getItem('selectedCards'));
+  if (savedSelectedCards !== null) {
+    setSelectedCards(savedSelectedCards);
+  }
+
+  const savedMatchingGhosts = JSON.parse(localStorage.getItem('matchingGhosts'));
+  if (savedMatchingGhosts !== null) {
+    setMatchingGhosts(savedMatchingGhosts);
+  }
+
+  const savedGhost = JSON.parse(localStorage.getItem('ghost'));
+  if (savedGhost !== null) {
+    setghost(savedGhost);
+  }
+
+  const savedEvidences = JSON.parse(localStorage.getItem('evidences'));
+  if (savedEvidences !== null) {
+    setevidences(savedEvidences);
+  }
+
+  const savedGamelist = JSON.parse(localStorage.getItem('gamelist'));
+  if (savedGamelist !== null) {
+    setgamelist(savedGamelist);
+  }
+
+  const savedGame = JSON.parse(localStorage.getItem('game'));
+  if (savedGame !== null) {
+    setgame(savedGame);
+  }
+
+  const savedExtraGhosts = JSON.parse(localStorage.getItem('extraghosts'));
+  if (savedExtraGhosts !== null) {
+    setghostsextra(savedExtraGhosts);
+  }
+}, []);
+
+
+
+
+
+
 const handleSetEvidence = (matchingEvidences, removeGhost) => {
   const uniqueEvidencesSet = new Set(selectedEvidences.concat(matchingEvidences));
   let uniqueEvidences = Array.from(uniqueEvidencesSet);
@@ -108,6 +167,7 @@ const returnElement=()=>{
          }
          fetchEvidence()
     },[])
+    
 return(
         <main>
 
