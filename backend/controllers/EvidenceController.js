@@ -19,9 +19,9 @@ const getAEvidence=asyncHandler(async(req, res) => {
   res.status(200).json(evidence)
 })
 const createEvidence=asyncHandler(async(req, res) => {
-  const {Name,Image} = req.body
+  const {Name,Image,GameList=[]} = req.body
   try {
-  const evidence= await Evidence.create({Name,Image})
+  const evidence= await Evidence.create({Name,Image,GameList})
   res.status(200).json(evidence)
   }catch(err) {
    res.status(400).json({error: err.message})

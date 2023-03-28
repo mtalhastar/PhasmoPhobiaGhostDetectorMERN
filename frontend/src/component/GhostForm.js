@@ -8,6 +8,8 @@ const GhostForm = () => {
     const [selectedOption, setSelectedOption] = useState('');
     const [allevidenceList,setAllEvidenceList]=useState('')
     const [gamelist,setgamelist]=useState([])
+    const [game,setgame]=useState('')
+    const [evidencelists,setevidencelists]=useState([])
 
 
   useEffect(() => {
@@ -26,12 +28,30 @@ const GhostForm = () => {
 
         fetchEvidence()
     },[])
+    
+    const addIntoLists=(obj)=>{
+     setevidencelists([...evidencelists,obj])
+     console.log(evidencelists)
+    }
+
+    const addInto=()=>{
+        const evidenceobj=
+            {
+                Game:game,
+                evidences:evidenceList
+            }
+        setEvidenceList([])
+        addIntoLists(evidenceobj)
+    }
+
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-
-        const ghost = {Name:name, EvidenceList:evidenceList}
-
+         
+        
+       
+        const ghost = {Name:name, EvidenceList:evidencelists}
+        setevidencelists([]);
         const response = await fetch('/ghost', {
             method: 'POST',
             body: JSON.stringify(ghost),
@@ -67,7 +87,19 @@ const GhostForm = () => {
   }
 };
 
+const handleAddGame = () => {
+ 
+    setgame(selectedOption);
+    console.log(game)
+    setSelectedOption('');
+
+};
+
+
+
+
     return (
+        <>
         <form className="create" onSubmit={handleSubmit}>
             <h3 className="h31">Add Ghost Information</h3>
 
@@ -84,9 +116,9 @@ const GhostForm = () => {
           
             <label className="label1">You can assign multiple evidences here</label>
              <select className="dropdown" 
-              value={selectedOption}
-              onChange={handleOptionChange}
-              onClick={handleAddEvidence}
+             value={selectedOption}
+             onChange={handleOptionChange}
+             onClick={handleAddEvidence}
               >
               <option value=""></option>
              {allevidenceList && allevidenceList.map((option) => (
@@ -95,18 +127,28 @@ const GhostForm = () => {
              </option>
              ))}
              </select>            
-             
              <label className="label1">Assign The Game</label>
-              <select className="dropdown">
+              <select className="dropdown"
+             value={selectedOption}
+             onChange={handleOptionChange}
+             onClick={handleAddGame}
+              >
+              <option value=""> Choose Game</option>
              {gamelist && gamelist.map((option) => (
-             <option   key={option._id}     value={option.Name}>
+             <option  key={option._id} value={option.Name}>
              {option.Name}
              </option>
              ))}
              </select>  
+           
+            
+           <button className="button1" type="button" onClick={addInto}> Add List</button>
             <button className="button1"> Add Ghost Details</button>
             {error && <xdiv className="error">{error}</xdiv>}
         </form>
+         
+       
+        </>
     )
 }
 

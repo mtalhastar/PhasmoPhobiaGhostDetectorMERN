@@ -37,7 +37,7 @@ const GhostDetails = ({ ghost }) => {
             <p><strong>Name: </strong>{ghost.Name}</p>
             <p><strong>Evidence List: </strong>{ghost.EvidenceList && ghost.EvidenceList.map((ghostz) => (
            <div>
-           <h1> Game : {ghostz.Game}</h1>
+           <h1>Game: {ghostz.Game}</h1>
            {ghostz.evidences && ghostz.evidences.map((ghosts) => (
           <p>{ghosts}</p>
         ))}

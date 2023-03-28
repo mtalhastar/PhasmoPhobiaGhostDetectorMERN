@@ -16,7 +16,10 @@ const SecondPage =()=>{
     const [gamelist,setgamelist]=useState([])
     const[game,setgame]=useState('Phasmophobia')
     const[extraghosts,setghostsextra]=useState([])
-/*const handleSetGhosts = (matchingGhost) => {
+    const[extraevidences,setextraevidences]=useState([])
+
+
+    /*const handleSetGhosts = (matchingGhost) => {
     setMatchingGhosts(matchingGhost);
 };
 */
@@ -34,6 +37,7 @@ const handleCardSelect=(evidence)=>{
 
  const startGame =()=>{
   const ghooost = extraghosts
+  const tobeevidences =extraevidences
   console.log(JSON.stringify(ghost))
      const updatedGhosts = ghooost.map((ghost) => ({
         ...ghost,
@@ -41,7 +45,13 @@ const handleCardSelect=(evidence)=>{
           .map((evidenceList) => evidenceList.evidences)
           .flat(),
       }));
+
+const filterEvidenceByGame=(evidenceList, game)=> {
+  return evidenceList.filter(item => item.GameList.includes(game));
+}
+
     setghost(updatedGhosts)
+    setevidences(filterEvidenceByGame(tobeevidences,game))
     console.log(JSON.stringify(updatedGhosts))
  }
 
@@ -104,6 +114,7 @@ const returnElement=()=>{
            setghost([...ghostjson])
            setghostsextra([...ghostjson])
            setgamelist([...gamejson])
+           setextraevidences([...json])
          }
          }
          fetchEvidence()
