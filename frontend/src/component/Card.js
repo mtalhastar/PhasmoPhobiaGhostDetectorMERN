@@ -5,10 +5,6 @@ const [selected, setSelected] = useState(false);
 const [doubleClicked, setDoubleClicked] = useState(false);
 
 
-useEffect(() => {
-    localStorage.setItem("selected", JSON.stringify(selected));
-    localStorage.setItem("doubleClicked", JSON.stringify(doubleClicked));
-  }, [selected, doubleClicked]);
 
   // Retrieve selected and doubleClicked from localStorage on component mount
   useEffect(() => {
@@ -25,27 +21,6 @@ useEffect(() => {
   }, []);
 
   // Rest of component code ...
-
-
-
-
-const matchingGhostlist=useRef([])
-function findGhosts(evidenceArray, ghostArray) {
-const ghosts = [];
-for (const ghost of ghostArray) {
-let found = true;
-for (const evidence of evidenceArray) {
-if (!ghost.EvidenceList.includes(evidence.Name)) {
-found = false;
-break;
-}
-}
-if (found) {
-ghosts.push(ghost);
-}
-}
-return ghosts;
-}
 
 const handleClick = () => {
      setSelected(!selected);

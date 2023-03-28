@@ -10,6 +10,8 @@ const evidenceSchema=new Schema({
         Image: {
             type:String
         },
+        GameList:[String]
+        
     },{timestamps:true});
 
 module.exports=mongoose.model('Evidence',evidenceSchema)
