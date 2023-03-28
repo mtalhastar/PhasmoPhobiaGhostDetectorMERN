@@ -13,7 +13,9 @@ const SecondPage =()=>{
     const [matchingGhosts, setMatchingGhosts] = useState([]);
     const [selectedEvidences, setSelectedEvidences] = useState([]);
     const [selectedCards,setSelectedCards]=useState([])
-    
+    const [selectedEvidences1, setSelectedEvidences1] = useState([]);
+    const [matchingGhosts1,setMatchingGhosts1]=useState([])
+
 /*const handleSetGhosts = (matchingGhost) => {
     setMatchingGhosts(matchingGhost);
 };
@@ -27,6 +29,10 @@ const handleCardSelect=(evidence)=>{
       )
     );
     setMatchingGhosts(filteredGhosts);
+   
+ 
+  
+    
 }
 
 const handleUnSelect=(evidence)=>{
@@ -44,6 +50,8 @@ const handleUnSelect=(evidence)=>{
         )
       );
       setMatchingGhosts(filteredGhosts);
+   
+    
     }
 }
 
@@ -57,7 +65,29 @@ const handleSetEvidence = (matchingEvidences, removeGhost) => {
     }
   }
   setSelectedEvidences(uniqueEvidences);
+   
+   
+
+  
+       
+
 }
+
+
+useEffect(() => {
+    localStorage.setItem('selectedevidence', JSON.stringify(selectedEvidences))
+  },[selectedEvidences])
+
+  useEffect(() => {
+    localStorage.setItem('matchingevidence', JSON.stringify(matchingGhosts))
+  },[matchingGhosts])
+
+
+  
+
+
+
+
    useEffect(()=> {
       
          const fetchEvidence=async()=>{
@@ -71,27 +101,11 @@ const handleSetEvidence = (matchingEvidences, removeGhost) => {
            setghost([...ghostjson])
          }
          }
-
          fetchEvidence()
         
-    },[])
+    })
 return(
         <main>
-        <section className="evidence-container">
-        <section className="evidence-section">
-         <h2>Evidence</h2>
-        {selectedEvidences && selectedEvidences.map((content) => (
-                    <p key={content._id}>{content.Name}</p>
-          ))}
-        </section>
-        <section className="ghost-section">
-            <h2>Ghost</h2>
-         {matchingGhosts && matchingGhosts.map((content) => (
-                    <p key={content._id}>{content.Name}</p>
-          ))}
-        </section>
-        </section>
-
        <section className="ghost-evidence-section">
         <h2>Ghost Evidence</h2>
         <button onClick={refresh}>Reset</button>

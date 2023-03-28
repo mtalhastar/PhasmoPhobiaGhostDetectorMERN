@@ -3,6 +3,7 @@ import SecondPage from './pages/SecondPage'
 import EvidencePage from './pages/EvidencePage'
 import GhostPage from './pages/GhostPage'
 import NavBar from './component/Navbar'
+import Test from './pages/Test'
 
 
 function App() {
@@ -27,6 +28,12 @@ function App() {
            <Route
            path="/GhostPage"
            element= {<GhostPage/>}
+            />
+        </Routes>
+         <Routes>
+           <Route
+           path="/test"
+           element= {<Test/>}
             />
         </Routes>
       </div>

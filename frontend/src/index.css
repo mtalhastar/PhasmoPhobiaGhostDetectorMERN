@@ -185,7 +185,7 @@ main {
 }
 
 .evidence-section {
-  width: 230px;
+  width: 100%;
   background-color: #f0f0f0;
   border-radius: 10px;
   padding: 10px;
@@ -199,7 +199,7 @@ main {
 
 .ghost-section {
   margin-top: 10px;
-  width: 230px;
+  width: 100%;
   background-color: #f0f0f0;
   border-radius: 10px;
   padding: 10px;
@@ -212,6 +212,7 @@ main {
 .evidence-container {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .evidence-section h2 {
