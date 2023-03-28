@@ -215,6 +215,12 @@ main {
   width: 100%;
 }
 
+.canceled {
+  text-decoration: line-through;
+  /* Add a line-through decoration to the text */
+  color: red;
+  /* Set the text color to red */
+}
 .evidence-section h2 {
   margin-top: 0;
   text-align: center;

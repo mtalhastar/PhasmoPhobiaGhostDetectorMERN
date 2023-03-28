@@ -4,23 +4,6 @@ function Card(props) {
 const [selected, setSelected] = useState(false);
 const [doubleClicked, setDoubleClicked] = useState(false);
 
-const matchingGhostlist=useRef([])
-function findGhosts(evidenceArray, ghostArray) {
-const ghosts = [];
-for (const ghost of ghostArray) {
-let found = true;
-for (const evidence of evidenceArray) {
-if (!ghost.EvidenceList.includes(evidence.Name)) {
-found = false;
-break;
-}
-}
-if (found) {
-ghosts.push(ghost);
-}
-}
-return ghosts;
-}
 
 const handleClick = () => {
      setSelected(!selected);
@@ -50,7 +33,7 @@ return (
     <img src={props.e.Image} alt={props.e.Name} />
   </div>
   <div className="details">
-    <h3>{props.e.Name}</h3>
+    <h3 className={doubleClicked && !selected ? "canceled" : ""}>{props.e.Name}</h3>
   </div>
 </div>
 );
