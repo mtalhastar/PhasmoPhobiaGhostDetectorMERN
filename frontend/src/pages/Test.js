@@ -13,10 +13,10 @@ const Test =()=>{
     const [selectedEvidences, setSelectedEvidences] = useState([]);
   
 
-/*const handleSetGhosts = (matchingGhost) => {
+const handleSetGhosts = (matchingGhost) => {
     setMatchingGhosts(matchingGhost);
 };
-*/
+
 useEffect(() => {
 const matchingGhostsFromStorage = JSON.parse(localStorage.getItem('matchingevidence'))
 if (matchingGhostsFromStorage !== null) {
@@ -29,23 +29,57 @@ if (matchingGhostsFromStorage !== null) {
        }
   })
 
+  
 
   
 return(
         <main>
         <section className="evidence-container">
+
         <section className="evidence-section">
          <h2>Evidence</h2>
         {selectedEvidences && selectedEvidences.map((content) => (
-                    <p key={content._id}>{content.Name}</p>
+            <p key={content._id}>{content.Name}</p>
           ))}
         </section>
-        <section className="ghost-section">
-            <h2>Ghost</h2>
-         {matchingGhosts && matchingGhosts.map((content) => (
-                    <p key={content._id}>{content.Name}</p>
-          ))}
-        </section>
+        
+        {/* <section className="ghost-section">
+          <h2>Ghost</h2>
+          {matchingGhosts &&
+            matchingGhosts.map((content) => (
+              <div key={content._id}>
+                <p>{content.Name}</p>
+                {content.EvidenceList &&
+                  content.EvidenceList.map((evidence) => (
+                    <p key={evidence._id}>{evidence}</p>
+                  ))}
+              </div>
+            ))}
+        </section> */}
+
+<section className="ghost-section">
+  <h2>Ghost</h2>
+  {matchingGhosts &&
+    matchingGhosts.map((ghost) => {
+      const ghostEvidences = ghost.EvidenceList.filter(
+        (evidence) => !selectedEvidences.some((sel) => sel.Name === evidence)
+      );
+      if (ghostEvidences.length > 0) {
+        return (
+          <div key={ghost._id}>
+            <h1>{ghost.Name}</h1>
+            {ghostEvidences.map((evidence) => (
+              <p key={evidence}>{evidence}</p>
+            ))}
+          </div>
+        );
+      } else {
+        return <h1>{ghost.Name}</h1>;
+      }
+    })}
+</section> 
+
+
         </section>
     </main>
 )
