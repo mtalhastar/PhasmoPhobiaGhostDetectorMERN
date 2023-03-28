@@ -2,6 +2,7 @@ import{BrowserRouter,Routes,Route} from 'react-router-dom';
 import SecondPage from './pages/SecondPage'
 import EvidencePage from './pages/EvidencePage'
 import GhostPage from './pages/GhostPage'
+import Test from './pages/Test'
 import NavBar from './component/Navbar'
 
 
@@ -15,6 +16,12 @@ function App() {
            <Route
            path="/"
            element= {<SecondPage/>}
+            />
+        </Routes>
+         <Routes>
+           <Route
+           path="/test"
+           element= {<Test/>}
             />
         </Routes>
         <Routes>

@@ -96,7 +96,20 @@ const returnElement=()=>{
  console.log(ghost)
  console.log(evidences)
 }
+  useEffect(() => {
+    localStorage.setItem('selectedevidence', JSON.stringify(selectedEvidences))
+  },[selectedEvidences])
+
+  useEffect(() => {
+    localStorage.setItem('matchingevidence', JSON.stringify(matchingGhosts))
+  },[matchingGhosts])
+
+
   
+
+
+
+
    useEffect(()=> {
         
     
@@ -123,9 +136,11 @@ const returnElement=()=>{
 return(
         <main>
 
-        <section className="evidence-container">
+      
 
-            <select className="dropdown" 
+     
+        <section className="ghost-evidence-section">
+         <select className="dropdown" 
              
               onChange={handleOptionChange}
               >
@@ -137,22 +152,6 @@ return(
              ))}
              </select>  
            <button onClick={startGame}>startGame</button>
-
-        <section className="evidence-section">
-         <h2>Evidence</h2>
-        {selectedEvidences && selectedEvidences.map((content) => (
-                    <p key={content._id}>{content.Name}</p>
-          ))}
-        </section>
-        <section className="ghost-section">
-            <h2>Ghost</h2>
-         {matchingGhosts && matchingGhosts.map((content) => (
-                    <p key={content._id}>{content.Name}</p>
-          ))}
-        </section>
-        </section>
-
-        <section className="ghost-evidence-section">
         <h2>Ghost Evidence</h2>
         <button onClick={refresh}>Reset</button>
         <div className="cards">
