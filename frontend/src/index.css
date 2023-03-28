@@ -186,7 +186,7 @@ main {
 
 .evidence-section {
   width: 100%;
-  background-color: #f0f0f0;
+  background-color: #202020;
   border-radius: 10px;
   padding: 10px;
   overflow: auto;
@@ -200,13 +200,21 @@ main {
 .ghost-section {
   margin-top: 10px;
   width: 100%;
-  background-color: #f0f0f0;
+  background-color: #202020;
   border-radius: 10px;
   padding: 10px;
 }
 
 .ghost-section h2 {
   text-align: center;
+  color: rgb(255, 255, 255);
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.ghost-section p{
+  color: #c9c9c9;
+  margin-left: 130px; 
 }
 
 .evidence-container {
@@ -224,6 +232,20 @@ main {
 .evidence-section h2 {
   margin-top: 0;
   text-align: center;
+  color: rgb(255, 255, 255);
+  font-size: 20px;
+}
+
+.ghost-section h1{
+  color: #ffffff;
+  /* text-align: center; */
+  font-size: 14px;
+  /* margin-bottom: -24px; */
+}
+
+.evidence-section p{
+  /* text-align: center; */
+  color: #c9c9c9;
 }
 
 .ghost-evidence-section {
