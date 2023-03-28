@@ -103,7 +103,7 @@ useEffect(() => {
          }
          fetchEvidence()
         
-    })
+    },[])
 return(
         <main>
        <section className="ghost-evidence-section">
