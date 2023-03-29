@@ -151,9 +151,10 @@ return(
              </option>
              ))}
              </select>  
-           <button onClick={startGame}>startGame</button>
+           <button className="start-button" onClick={startGame}>Start Game</button>
+           <button className="reset-button" onClick={refresh}>Reset</button>
         <h2>Ghost Evidence</h2>
-        <button onClick={refresh}>Reset</button>
+        
         <div className="cards">
         {evidences&&evidences.map((element)=>(
             <Card key={element._id} e= {element} ghosts={ghost} handleCardSelect={handleCardSelect}  handleUnSelect={handleUnSelect} evidence={evidences} setEvidence={handleSetEvidence} selectedEvidence={selectedEvidences} setSelectedEvidence={setSelectedEvidences}  matchghost={matchingGhosts} />

@@ -84,7 +84,7 @@ const EvidenceDetails = ({ evidence }) => {
        <form  onSubmit={updateInfo}> 
  
         <label className="label1">Assign The Game</label>
-        <select className="dropdown"
+        <select className="dropdown1"
            value={selectedOption}
             onChange={handleOptionChange}
             onClick={handleAddGame}>

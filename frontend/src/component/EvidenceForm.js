@@ -56,7 +56,23 @@ const EvidenceForm = () => {
 
             <button className="button1">Add Evidence Details</button>
             {error && <div className="error">{error}</div>}
+
+
+            <h3 className="h31">Add New Game</h3>
+
+            <label className="label1">Name:</label>
+            <input 
+                type="text" 
+                onChange={(e) => setName(e.target.value)}
+                value={name} 
+                className={emptyFields.includes('name') ? 'error' : ''}
+            />
+
+            <button className="button1">Add Game</button>
+            {error && <div className="error">{error}</div>}
         </form>
+
+        
     )
 }
 

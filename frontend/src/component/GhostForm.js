@@ -115,7 +115,7 @@ const handleAddGame = () => {
             <label className="label1">Evidence List:</label>
           
             <label className="label1">You can assign multiple evidences here</label>
-             <select className="dropdown" 
+             <select className="dropdown1" 
              value={selectedOption}
              onChange={handleOptionChange}
              onClick={handleAddEvidence}
@@ -128,7 +128,7 @@ const handleAddGame = () => {
              ))}
              </select>            
              <label className="label1">Assign The Game</label>
-              <select className="dropdown"
+              <select className="dropdown1"
              value={selectedOption}
              onChange={handleOptionChange}
              onClick={handleAddGame}
