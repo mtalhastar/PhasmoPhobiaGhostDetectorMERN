@@ -2,6 +2,7 @@ import{BrowserRouter,Routes,Route} from 'react-router-dom';
 import SecondPage from './pages/SecondPage'
 import EvidencePage from './pages/EvidencePage'
 import GhostPage from './pages/GhostPage'
+import GamePage from './pages/GamePage'
 import Test from './pages/Test'
 import NavBar from './component/Navbar'
 
@@ -34,6 +35,12 @@ function App() {
            <Route
            path="/GhostPage"
            element= {<GhostPage/>}
+            />
+        </Routes>
+        <Routes>
+           <Route
+           path="/GamePage"
+           element= {<GamePage/>}
             />
         </Routes>
       </div>

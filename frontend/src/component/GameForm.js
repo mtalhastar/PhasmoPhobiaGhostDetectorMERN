@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-const EvidenceForm = () => {
+const GameForm = () => {
     const [name, setName] = useState('')
     const [image, setImage] = useState('')
     const [error, setError] = useState(null)
@@ -9,9 +9,9 @@ const EvidenceForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        const buyer = {Name:name, Image:image}
+        const buyer = {Name:name}
 
-        const response = await fetch('/evidence', {
+        const response = await fetch('/game', {
             method: 'POST',
             body: JSON.stringify(buyer),
             headers: {
@@ -36,7 +36,7 @@ const EvidenceForm = () => {
 
     return (
         <form className="create" onSubmit={handleSubmit}>
-            <h3 className="h31">Add Evidence Information</h3>
+            <h3 className="h31">Add New Game</h3>
 
             <label className="label1">Name:</label>
             <input 
@@ -46,21 +46,12 @@ const EvidenceForm = () => {
                 className={emptyFields.includes('name') ? 'error' : ''}
             />
 
-            <label className="label1">Image:</label>
-            <input 
-                type="text" 
-                onChange={(e) => setImage(e.target.value)}
-                value={image}
-                className={emptyFields.includes('location') ? 'error' : ''}
-            />
-
-            <button className="button1">Add Evidence Details</button>
+            <button className="button1">Add Game</button>
             {error && <div className="error">{error}</div>}
-
         </form>
 
         
     )
 }
 
-export default EvidenceForm
+export default GameForm
