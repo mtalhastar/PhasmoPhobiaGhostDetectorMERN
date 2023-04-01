@@ -105,11 +105,6 @@ const returnElement=()=>{
   },[matchingGhosts])
 
 
-  
-
-
-
-
    useEffect(()=> {
         
     
@@ -135,9 +130,6 @@ const returnElement=()=>{
     
 return(
         <main>
-
-      
-
      
         <section className="ghost-evidence-section">
          <select className="dropdown" 

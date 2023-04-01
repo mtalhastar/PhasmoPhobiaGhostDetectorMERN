@@ -19,7 +19,7 @@ const EvidencePage = () => {
         }
 
         fetchBuyer()
-    })
+    },[])
 
     return (
         <div className="home">
