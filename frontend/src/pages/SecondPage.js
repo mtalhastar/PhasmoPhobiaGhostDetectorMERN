@@ -62,6 +62,14 @@ const handleOptionChange = (event) => {
      };
 
 
+const handleDoubleClick=(evidenceToRemove)=>{
+  const newMatchingGhosts = matchingGhosts.map((ghost) => {
+    const newEvidence = ghost.EvidenceList.filter((evidence) => evidence.Name !== evidenceToRemove.Name);
+    return { ...ghost, evidence: newEvidence };
+  });
+  setMatchingGhosts(newMatchingGhosts);
+};
+
 const handleUnSelect=(evidence)=>{
   const updatedSelectedCards = selectedCards.filter(
       (selected) => selected.Name !== evidence.Name
@@ -149,7 +157,7 @@ return(
         
         <div className="cards">
         {evidences&&evidences.map((element)=>(
-            <Card key={element._id} e= {element} ghosts={ghost} handleCardSelect={handleCardSelect}  handleUnSelect={handleUnSelect} evidence={evidences} setEvidence={handleSetEvidence} selectedEvidence={selectedEvidences} setSelectedEvidence={setSelectedEvidences}  matchghost={matchingGhosts} />
+            <Card key={element._id} e= {element} ghosts={ghost} handleCardSelect={handleCardSelect} handleDoubleClick={handleDoubleClick}  handleUnSelect={handleUnSelect} evidence={evidences} setEvidence={handleSetEvidence} selectedEvidence={selectedEvidences} setSelectedEvidence={setSelectedEvidences}  matchghost={matchingGhosts} />
          ))
         }
       </div>

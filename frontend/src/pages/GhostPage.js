@@ -19,7 +19,7 @@ const GhostPage = () => {
         }
 
         fetchBuyer()
-    },[ghost])
+    })
 
     return (
         <div className="home">
