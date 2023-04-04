@@ -45,13 +45,15 @@ const handleDoubleClick = () => {
     setDoubleClicked(!doubleClicked);
   };
 return (
- <div className={`card card1 ${selected ? 'selected' : ''} ${doubleClicked ? 'double-clicked' : ''}`} onClick={handleClick} onDoubleClick={handleDoubleClick} >
+ <div className={`card card1 ${selected ? 'selected' : ''} ${doubleClicked ? 'double-clicked' : ''}`}>
   <div className="container">
     <img src={props.e.Image} alt={props.e.Name} />
-  </div>
-  <div className="details">
     <h3>{props.e.Name}</h3>
   </div>
+
+    <button onClick={handleClick}>Select</button>
+    <button onClick={handleDoubleClick}>Disable</button>
+ 
 </div>
 );
 }

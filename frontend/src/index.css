@@ -163,6 +163,37 @@ button {
 
 }
 
+.card button{
+
+  display: flex;
+    margin-left: 0%;
+    margin-top: 0px;
+    display: block;
+    width: fit-content;
+    border: 1px solid #1c1b29;
+    background: #1c1b29;
+    padding: 10px 30px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 16px;
+    color: #fff;
+
+}
+
+.container button{
+ 
+    margin-left: 0;
+    margin-top: 0px;
+
+
+    border: 1px solid #1c1b29;
+    background: #1c1b29;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 16px;
+    color: #fff;
+}
+
 .start-button {
   width: 16%;
   margin-left: 300px;

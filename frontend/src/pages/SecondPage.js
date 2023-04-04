@@ -88,6 +88,9 @@ const handleUnSelect=(evidence)=>{
     }
 }
 
+
+
+
 const handleSetEvidence = (matchingEvidences, removeGhost) => {
   const uniqueEvidencesSet = new Set(selectedEvidences.concat(matchingEvidences));
   let uniqueEvidences = Array.from(uniqueEvidencesSet);
@@ -133,6 +136,7 @@ const returnElement=()=>{
            setextraevidences([...json])
          }
          }
+        
          fetchEvidence()
     },[])
     
