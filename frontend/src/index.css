@@ -179,6 +179,9 @@ button {
     color: #fff;
 
 }
+.cancelled {
+  text-decoration: line-through;
+}
 
 .container button{
  

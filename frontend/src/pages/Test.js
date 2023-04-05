@@ -11,7 +11,7 @@ const Test =()=>{
   
     const [matchingGhosts, setMatchingGhosts] = useState([]);
     const [selectedEvidences, setSelectedEvidences] = useState([]);
-  
+    const [evidencecancelled,setevidencecancelled]=useState([])
 
 const handleSetGhosts = (matchingGhost) => {
     setMatchingGhosts(matchingGhost);
@@ -23,15 +23,18 @@ if (matchingGhostsFromStorage !== null) {
       setMatchingGhosts([...matchingGhostsFromStorage])
 
     }
+const cancelled = JSON.parse(localStorage.getItem('Evidence'))
+if (cancelled !== null) {
+      setevidencecancelled([...cancelled])
+}    
+console.log(cancelled)
    const evidencesFromStorage = JSON.parse(localStorage.getItem('selectedevidence'))
     if (evidencesFromStorage !== null) {
       setSelectedEvidences([...evidencesFromStorage])
        }
   })
 
-  
 
-  
 return(
         <main>
         <section className="evidence-container">
@@ -40,9 +43,9 @@ return(
          <h2>Evidence</h2>
         {selectedEvidences && selectedEvidences.map((content) => (
             <p key={content._id}>{content.Name}</p>
-          ))}
+          ))} 
+      
         </section>
-        
         {/* <section className="ghost-section">
           <h2>Ghost</h2>
           {matchingGhosts &&
@@ -56,7 +59,11 @@ return(
               </div>
             ))}
         </section> */}
-
+<section className="evidence-section">
+  {evidencecancelled && evidencecancelled.map((content) => (
+            <p  class="cancelled" key={content._id}>{content.Name}</p>
+          ))} 
+</section>
 <section className="ghost-section">
   <h2>Ghost</h2>
   {matchingGhosts &&
