@@ -23,16 +23,22 @@ if (matchingGhostsFromStorage !== null) {
       setMatchingGhosts([...matchingGhostsFromStorage])
 
     }
-const cancelled = JSON.parse(localStorage.getItem('Evidence'))
-if (cancelled !== null) {
-      setevidencecancelled([...cancelled])
-}    
-console.log(cancelled)
    const evidencesFromStorage = JSON.parse(localStorage.getItem('selectedevidence'))
     if (evidencesFromStorage !== null) {
       setSelectedEvidences([...evidencesFromStorage])
        }
   })
+
+
+  useEffect(() => {
+  const cancelled = JSON.parse(localStorage.getItem('Evidence'))
+   if (cancelled !== null) {
+      setevidencecancelled([...cancelled])
+    }    
+    console.log(evidencecancelled)
+},[evidencecancelled])
+
+
 
 
 return(
