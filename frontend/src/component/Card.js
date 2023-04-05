@@ -5,13 +5,7 @@ const [selected, setSelected] = useState(false);
 const [doubleClicked, setDoubleClicked] = useState(false);
 const [disabled,setdisabled]=useState("Disable")
 const [clicked,setClicked] =useState("Select")
-const [evidencecancelled,setevidencecancelled]=useState([])
 
-  // Retrieve selected and doubleClicked from localStorage on component mount
-  useEffect(() => {
-    localStorage.setItem('Evidence', JSON.stringify(evidencecancelled))
-  }
-  , [evidencecancelled]);
 
   // Rest of component code ...
 
@@ -39,19 +33,16 @@ const handleClick = () => {
     //  props.setGhost(matchingGhostlist.current);
     }
   };
-const evidenceaddinto = (evidence) => {
-  setevidencecancelled((prevEvidence) => [...prevEvidence, evidence]);
-}
+
 
 const handleDisable = () => {
     setDoubleClicked(!doubleClicked);
     props.handleDisableClick(props.e)
       setdisabled("Enable")
-      evidenceaddinto(props.e)
+      props.evidenceaddinto(props.e)
     if(doubleClicked){
       setdisabled("Disable")
-      const ecancelled = evidencecancelled.filter((e) => e !== props.e);
-      setevidencecancelled(ecancelled);
+      props.evidencecancelling(props.e)
       props.handleEnableClick(props.e)
     }
   };

@@ -23,6 +23,13 @@ const SecondPage =()=>{
     setMatchingGhosts(matchingGhost);
 };
 */
+const [evidencecancelled,setevidencecancelled]=useState([])
+
+  // Retrieve selected and doubleClicked from localStorage on component mount
+  useEffect(() => {
+    localStorage.setItem('Evidence', JSON.stringify(evidencecancelled))
+  }
+  , [evidencecancelled]);
 const handleCardSelect=(evidence)=>{
   const updatedSelectedCards = [...selectedCards, evidence];
     setSelectedCards(updatedSelectedCards);
@@ -115,8 +122,13 @@ const handleUnSelect=(evidence)=>{
       setMatchingGhosts(filteredGhosts);
     }
 }
-
-
+const evidencecancelling=(evidence)=>{
+    const ecancelled = evidencecancelled.filter((e) => e !== evidence);
+    setevidencecancelled(ecancelled);
+}
+const evidenceaddinto = (evidence) => {
+  setevidencecancelled((prevEvidence) => [...prevEvidence, evidence]);
+}
 const handleSetEvidence = (matchingEvidences, removeGhost) => {
   const uniqueEvidencesSet = new Set(selectedEvidences.concat(matchingEvidences));
   let uniqueEvidences = Array.from(uniqueEvidencesSet);
@@ -186,7 +198,7 @@ return(
         
         <div className="cards">
         {evidences&&evidences.map((element)=>(
-            <Card key={element._id} e= {element} ghosts={ghost} handleEnableClick={handleEnableClick} handleCardSelect={handleCardSelect} handleDisableClick={handleDisableClick} handleUnSelect={handleUnSelect} evidence={evidences} setEvidence={handleSetEvidence} selectedEvidence={selectedEvidences} setSelectedEvidence={setSelectedEvidences}  matchghost={matchingGhosts} />
+            <Card key={element._id} e= {element} ghosts={ghost} evidenceaddinto={evidenceaddinto}  evidencecancelling={evidencecancelling} handleEnableClick={handleEnableClick} handleCardSelect={handleCardSelect} handleDisableClick={handleDisableClick} handleUnSelect={handleUnSelect} evidence={evidences} setEvidence={handleSetEvidence} selectedEvidence={selectedEvidences} setSelectedEvidence={setSelectedEvidences}  matchghost={matchingGhosts} />
          ))
         }
       </div>
