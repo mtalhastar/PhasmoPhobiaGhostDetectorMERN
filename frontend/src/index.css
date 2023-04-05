@@ -30,6 +30,8 @@ body {
   background-color: #1c1b29;
   border-radius: 10px;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.18);
+  display: flex;
+  flex-wrap: wrap;
   -webkit-transition: all 0.1s;
   -moz-transition: all 0.1s;
   transition: all 0.1s;
@@ -167,17 +169,22 @@ button {
 
   display: flex;
     margin-left: 0%;
-    margin-top: 0px;
+    margin-top: 40px;
     display: block;
-    width: fit-content;
+    width: 50%;
     border: 1px solid #1c1b29;
     background: #1c1b29;
-    padding: 10px 30px;
     border-radius: 6px;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 14px;
     color: #fff;
 
+}
+.container h3{
+  color: #ffffff;
+  text-align: center;
+  font-size: 14px;
+  margin-top: 10px;
 }
 .cancelled {
   text-decoration: line-through;

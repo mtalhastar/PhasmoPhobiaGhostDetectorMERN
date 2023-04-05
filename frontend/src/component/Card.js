@@ -1,4 +1,6 @@
 import { useEffect,useState,useMemo,useRef } from "react"
+import '../index.css'
+
 function Card(props) {
 
 const [selected, setSelected] = useState(false);
@@ -53,11 +55,11 @@ return (
     <h3>{props.e.Name}</h3>
   </div>
 
-    <button onClick={handleClick}>{clicked}</button>
-    <button onClick={handleDisable}>{disabled}</button>
+    <button style={{ backgroundColor: '#000000', color: 'white', display: 'inline-block', padding: '8px 16px', textAlign: 'center', textDecoration: 'none', fontSize: '16px', border: 'none', borderRadius: '4px', boxSizing: 'border-box' }} className="btn-select" onClick={handleClick}>{clicked}</button>
+    <button style={{ backgroundColor: '#000000', color: 'white', display: 'inline-block', padding: '8px 16px', textAlign: 'center', textDecoration: 'none', fontSize: '16px', border: 'none', borderRadius: '4px', boxSizing: 'border-box' }} className="btn-select" onClick={handleDisable}>{disabled}</button>
  
 </div>
 );
 }
 
-export default Card; 
+export default Card;
