@@ -102,7 +102,8 @@ setDisabledCards(updatedDisabledCards);
     setMatchingGhosts(filteredGhosts)
     }
 };
-   
+
+
 
 const handleUnSelect=(evidence)=>{
   const updatedSelectedCards = selectedCards.filter(
@@ -153,7 +154,9 @@ const returnElement=()=>{
     localStorage.setItem('matchingevidence', JSON.stringify(matchingGhosts))
   },[matchingGhosts])
 
-
+   useEffect(() => {
+    localStorage.setItem('evidences', JSON.stringify(evidences))
+  },[evidences])
    useEffect(()=> {
         
     

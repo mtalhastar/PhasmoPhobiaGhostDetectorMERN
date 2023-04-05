@@ -182,7 +182,11 @@ button {
 .cancelled {
   text-decoration: line-through;
 }
-
+.ghost-section img{
+  height: 20px;
+  width: 20px;
+  border-radius: 10px;
+}
 .container button{
  
     margin-left: 0;

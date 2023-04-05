@@ -1,6 +1,7 @@
 import { useEffect,useState,useMemo } from "react"
 import Card from "../component/Card.js"
 import axios from 'axios'
+import { set } from "date-fns"
 
 const refresh=()=>{
   window.location.reload()
@@ -12,16 +13,27 @@ const Test =()=>{
     const [matchingGhosts, setMatchingGhosts] = useState([]);
     const [selectedEvidences, setSelectedEvidences] = useState([]);
     const [evidencecancelled,setevidencecancelled]=useState([])
+    const [evidenceL,setE]=useState([])
 
 const handleSetGhosts = (matchingGhost) => {
     setMatchingGhosts(matchingGhost);
 };
-
+const evidenceLink = (evidenceName) => {
+  const evidence = evidenceL.find((evidence) => {
+    return evidence.Name === evidenceName;
+  });
+  return evidence ? evidence.Image:null
+}
 useEffect(() => {
 const matchingGhostsFromStorage = JSON.parse(localStorage.getItem('matchingevidence'))
 if (matchingGhostsFromStorage !== null) {
       setMatchingGhosts([...matchingGhostsFromStorage])
 
+    }
+
+    const evidences= JSON.parse(localStorage.getItem('evidences'))
+if (evidences !== null) {
+      setE([...evidences])
     }
    const evidencesFromStorage = JSON.parse(localStorage.getItem('selectedevidence'))
     if (evidencesFromStorage !== null) {
@@ -82,7 +94,7 @@ return(
           <div key={ghost._id}>
             <h1>{ghost.Name}</h1>
             {ghostEvidences.map((evidence) => (
-              <p key={evidence}>{evidence}</p>
+              <img src={evidenceLink(evidence)} key={evidence} alt={evidence}/>
             ))}
           </div>
         );

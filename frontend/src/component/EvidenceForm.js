@@ -1,5 +1,14 @@
 import { useState } from "react"
 
+function replaceDriveLink(link) {
+  if (link.includes("drive.google.com") && link.includes("/file/d/")) {
+    const fileId = link.split("/file/d/")[1].split("/")[0];
+    const shareableLink = `https://drive.google.com/uc?export=view&id=${fileId}`;
+    return shareableLink;
+  } else {
+    return link;
+  }
+}
 const EvidenceForm = () => {
     const [name, setName] = useState('')
     const [image, setImage] = useState('')
@@ -49,7 +58,7 @@ const EvidenceForm = () => {
             <label className="label1">Image:</label>
             <input 
                 type="text" 
-                onChange={(e) => setImage(e.target.value)}
+                onChange={(e) => setImage(replaceDriveLink(e.target.value))}
                 value={image}
                 className={emptyFields.includes('location') ? 'error' : ''}
             />
