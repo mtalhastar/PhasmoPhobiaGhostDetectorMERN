@@ -41,8 +41,12 @@ const handleClick = () => {
     }
   };
 
-const handleDoubleClick = () => {
+const handleDisable = () => {
     setDoubleClicked(!doubleClicked);
+    props.handleDisableClick(props.e)
+    if(doubleClicked){
+      props.handleUnSelect(props.e)
+    }
   };
 return (
  <div className={`card card1 ${selected ? 'selected' : ''} ${doubleClicked ? 'double-clicked' : ''}`}>
@@ -52,7 +56,7 @@ return (
   </div>
 
     <button onClick={handleClick}>Select</button>
-    <button onClick={handleDoubleClick}>Disable</button>
+    <button onClick={handleDisable}>Disable</button>
  
 </div>
 );

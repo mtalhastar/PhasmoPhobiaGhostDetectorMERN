@@ -17,7 +17,7 @@ const SecondPage =()=>{
     const[game,setgame]=useState('Phasmophobia')
     const[extraghosts,setghostsextra]=useState([])
     const[extraevidences,setextraevidences]=useState([])
-
+    const [disabledCards,setDisabledCards]=useState([])
 
     /*const handleSetGhosts = (matchingGhost) => {
     setMatchingGhosts(matchingGhost);
@@ -28,8 +28,8 @@ const handleCardSelect=(evidence)=>{
     setSelectedCards(updatedSelectedCards);
     const filteredGhosts = ghost.filter((ghost) =>
       updatedSelectedCards.every((selected) =>
-        ghost.EvidenceList.includes(selected.Name)
-      )
+        ghost.EvidenceList.includes(selected.Name) && !disabledCards.some((disabled) => ghost.EvidenceList.includes(disabled.Name)
+      ))
     );
     setMatchingGhosts(filteredGhosts);
 }
@@ -62,33 +62,40 @@ const handleOptionChange = (event) => {
      };
 
 
-const handleDoubleClick=(evidenceToRemove)=>{
-  const newMatchingGhosts = matchingGhosts.map((ghost) => {
-    const newEvidence = ghost.EvidenceList.filter((evidence) => evidence.Name !== evidenceToRemove.Name);
-    return { ...ghost, evidence: newEvidence };
-  });
-  setMatchingGhosts(newMatchingGhosts);
+const handleDisableClick=(evidence)=>{
+
+    const updatedDisabledCards = [...disabledCards, evidence];
+    setDisabledCards(updatedDisabledCards);
+    const filteredGhosts = ghost.filter((ghost) =>
+      selectedCards.every((selected) =>
+         ghost.EvidenceList.includes(selected.Name) && !updatedDisabledCards.some((disabled) => ghost.EvidenceList.includes(disabled.Name)
+
+    )
+  ));
+    setMatchingGhosts(filteredGhosts)
 };
+
+
+
 
 const handleUnSelect=(evidence)=>{
   const updatedSelectedCards = selectedCards.filter(
       (selected) => selected.Name !== evidence.Name
     );
     setSelectedCards(updatedSelectedCards);
-
+  
     if (updatedSelectedCards.length === 0) {
       setMatchingGhosts([]);
     } else {
       const filteredGhosts = ghost.filter((ghost) =>
         updatedSelectedCards.every((selected) =>
-          ghost.EvidenceList.includes(selected.Name)
+          ghost.EvidenceList.includes(selected.Name) && !disabledCards.some((disabled) => ghost.EvidenceList.includes(disabled.Name)
+        )
         )
       );
       setMatchingGhosts(filteredGhosts);
     }
 }
-
-
 
 
 const handleSetEvidence = (matchingEvidences, removeGhost) => {
@@ -142,7 +149,6 @@ const returnElement=()=>{
     
 return(
         <main>
-     
         <section className="ghost-evidence-section">
          <select className="dropdown" 
              
@@ -161,11 +167,10 @@ return(
         
         <div className="cards">
         {evidences&&evidences.map((element)=>(
-            <Card key={element._id} e= {element} ghosts={ghost} handleCardSelect={handleCardSelect} handleDoubleClick={handleDoubleClick}  handleUnSelect={handleUnSelect} evidence={evidences} setEvidence={handleSetEvidence} selectedEvidence={selectedEvidences} setSelectedEvidence={setSelectedEvidences}  matchghost={matchingGhosts} />
+            <Card key={element._id} e= {element} ghosts={ghost} handleCardSelect={handleCardSelect} handleDisableClick={handleDisableClick} handleUnSelect={handleUnSelect} evidence={evidences} setEvidence={handleSetEvidence} selectedEvidence={selectedEvidences} setSelectedEvidence={setSelectedEvidences}  matchghost={matchingGhosts} />
          ))
         }
       </div>
-         
        </section>
     </main>
 )
