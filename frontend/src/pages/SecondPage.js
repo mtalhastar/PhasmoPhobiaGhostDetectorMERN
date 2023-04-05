@@ -66,13 +66,18 @@ const handleDisableClick=(evidence)=>{
 
     const updatedDisabledCards = [...disabledCards, evidence];
     setDisabledCards(updatedDisabledCards);
+   
     const filteredGhosts = ghost.filter((ghost) =>
       selectedCards.every((selected) =>
          ghost.EvidenceList.includes(selected.Name) && !updatedDisabledCards.some((disabled) => ghost.EvidenceList.includes(disabled.Name)
 
     )
   ));
+    if (selectedCards.length === 0) {
+      setMatchingGhosts([]);
+    }else{
     setMatchingGhosts(filteredGhosts)
+    }
 };
 
 const handleEnableClick=(evidence)=>{
@@ -84,7 +89,11 @@ setDisabledCards(updatedDisabledCards);
       ghost.EvidenceList.includes(selected.Name) && !updatedDisabledCards.some((disabled) => ghost.EvidenceList.includes(disabled.Name))
     )
   );
-  setMatchingGhosts(filteredGhosts);
+   if (selectedCards.length === 0) {
+      setMatchingGhosts([]);
+    }else{
+    setMatchingGhosts(filteredGhosts)
+    }
 };
    
 
