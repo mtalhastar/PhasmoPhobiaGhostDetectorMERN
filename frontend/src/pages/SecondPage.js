@@ -75,8 +75,18 @@ const handleDisableClick=(evidence)=>{
     setMatchingGhosts(filteredGhosts)
 };
 
+const handleEnableClick=(evidence)=>{
+const updatedDisabledCards = disabledCards.filter((disabled) => disabled.Name !== evidence.Name);
+setDisabledCards(updatedDisabledCards);
 
-
+  const filteredGhosts = ghost.filter((ghost) =>
+    selectedCards.every((selected) =>
+      ghost.EvidenceList.includes(selected.Name) && !updatedDisabledCards.some((disabled) => ghost.EvidenceList.includes(disabled.Name))
+    )
+  );
+  setMatchingGhosts(filteredGhosts);
+};
+   
 
 const handleUnSelect=(evidence)=>{
   const updatedSelectedCards = selectedCards.filter(
@@ -167,7 +177,7 @@ return(
         
         <div className="cards">
         {evidences&&evidences.map((element)=>(
-            <Card key={element._id} e= {element} ghosts={ghost} handleCardSelect={handleCardSelect} handleDisableClick={handleDisableClick} handleUnSelect={handleUnSelect} evidence={evidences} setEvidence={handleSetEvidence} selectedEvidence={selectedEvidences} setSelectedEvidence={setSelectedEvidences}  matchghost={matchingGhosts} />
+            <Card key={element._id} e= {element} ghosts={ghost} handleEnableClick={handleEnableClick} handleCardSelect={handleCardSelect} handleDisableClick={handleDisableClick} handleUnSelect={handleUnSelect} evidence={evidences} setEvidence={handleSetEvidence} selectedEvidence={selectedEvidences} setSelectedEvidence={setSelectedEvidences}  matchghost={matchingGhosts} />
          ))
         }
       </div>

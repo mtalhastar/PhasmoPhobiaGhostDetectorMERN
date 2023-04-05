@@ -23,7 +23,11 @@ const [doubleClicked, setDoubleClicked] = useState(false);
   // Rest of component code ...
 
 const handleClick = () => {
+   if(doubleClicked){
+       return
+     }
      setSelected(!selected);
+    
   if (selected) {
     // Card is being unselected
   //  const prevMatchingGhostlist =
@@ -45,8 +49,9 @@ const handleDisable = () => {
     setDoubleClicked(!doubleClicked);
     props.handleDisableClick(props.e)
     if(doubleClicked){
-      props.handleUnSelect(props.e)
+      props.handleEnableClick(props.e)
     }
+      
   };
 return (
  <div className={`card card1 ${selected ? 'selected' : ''} ${doubleClicked ? 'double-clicked' : ''}`}>
