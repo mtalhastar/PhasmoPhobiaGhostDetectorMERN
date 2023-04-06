@@ -16,7 +16,7 @@ const EvidenceForm = () => {
     const [emptyFields, setEmptyFields] = useState([])
 
     const handleSubmit = async (e) => {
-        e.preventDefault()
+       
 
         const buyer = {Name:name, Image:image}
 
@@ -41,6 +41,8 @@ const EvidenceForm = () => {
             setEmptyFields([])
            
         }
+       
+       
     }
 
     return (
