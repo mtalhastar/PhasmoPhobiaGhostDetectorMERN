@@ -91,7 +91,7 @@ return(
       );
       if (ghostEvidences.length > 0) {
         return (
-          <div key={ghost._id}>
+          <div key={ghost._id} className="evidence-img">
             <h1>{ghost.Name}</h1>
             {ghostEvidences.map((evidence) => (
               <img src={evidenceLink(evidence)} key={evidence} alt={evidence}/>

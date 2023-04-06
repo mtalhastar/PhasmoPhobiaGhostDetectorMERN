@@ -364,7 +364,7 @@ header a {
 
 .buyer-details {
   display: inline-block;
-  background: #fff;
+  background: #000000;
   border-radius: 4px;
   margin: 20px;
   padding: 20px;
@@ -372,6 +372,16 @@ header a {
   width: 270px;
   position: relative;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.274);
+}
+
+.buyer-details p, h3{
+  color: #fff;
+  font-size: 0.9em;
+}
+
+.buyer-details h1{
+  font-size: 1.3em;
+  color: #98e2ff;
 }
 
 .img1 {
@@ -391,11 +401,11 @@ header a {
   color: rgb(255, 255, 255);
 }
 
-.buyer-details p {
+/* .buyer-details p {
   margin: 0;
   font-size: 0.9em;
   color: #1684af;
-}
+} */
 
 .buyer-details span {
   position: absolute;
@@ -455,4 +465,14 @@ input.error {
   margin-left: -90px;
   margin-right: 10px;
   padding-right: 30px;
+}
+
+.evidence-img {
+  display: flex;
+}
+
+@media screen and (max-width: 768px) {
+  .dropdown {
+    width: 40%;
+  }
 }

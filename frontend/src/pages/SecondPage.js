@@ -195,7 +195,7 @@ return(
              </option>
              ))}
              </select>  
-           <button className="start-button" onClick={startGame}>Start Game</button>
+           <button className="start-button" onClick={startGame}>Start</button>
            <button className="reset-button" onClick={refresh}>Reset</button>
         <h2>Ghost Evidence</h2>
         
